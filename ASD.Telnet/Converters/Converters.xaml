@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ASD.Telnet.Converters">
+    
+    <local:BooleanInverseConverter x:Key="BoolInverse" True="False" False="True"/>
+
+    <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityFalseCollapsed" True="Visible" False="Collapsed"/>
+    <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityFalseHidden" True="Visible" False="Hidden"/>
+    <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityTrueCollapsed" True="Collapsed" False="Visible"/>
+    <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityTrueHidden" True="Hidden" False="Visible"/>
+
+</ResourceDictionary>

@@ -3,6 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:vw="clr-namespace:ASD.Telnet.ViewModels"
+    xmlns:c="clr-namespace:ASD.Telnet.Controls"
+    xmlns:v="clr-namespace:ASD.Telnet.Views"
     Title="Telnet"
     Width="800"
     Height="480"
@@ -18,10 +20,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox
+        <c:ConsoleOutput
             Grid.Row="0"
-            Text="Output ..."
-            Style="{StaticResource ConsoleTextBlock}"/>
+            Text="{Binding OutputText}"/>
 
         <Border
             Grid.Row="1"
@@ -30,88 +31,21 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox
-                    Text="Input ..."
-                    Style="{StaticResource ConsoleTextBox}"/>
-                <StackPanel
-                    Grid.Column="1"
-                    Orientation="Horizontal">
-                    <TextBox
-                        Text="Host:"
-                        Style="{StaticResource TextBlockStyle}"
-                        FontFamily="Consolas"/>
-                    <ComboBox
-                        SelectedIndex="0"
-                        Visibility="{Binding Connected,
-                        Converter={StaticResource BooleanToVisibilityTrueCollapsed}}">
-                        <ComboBoxItem Content="192.168.100.1"/>
-                        <ComboBoxItem Content="192.168.100.2"/>
-                        <ComboBoxItem Content="192.168.100.5"/>
-                    </ComboBox>
-                    <TextBox
-                        Text="192.168.100.1"
-                        Visibility="{Binding Connected,
-                        Converter={StaticResource BooleanToVisibilityFalseCollapsed}}"
-                        Style="{StaticResource TextBlockStyle}"
-                        FontFamily="Consolas"/>
-                    <TextBox
-                        Text="Port:"
-                        Style="{StaticResource TextBlockStyle}"
-                        FontFamily="Consolas"/>
-                    <TextBox
-                        Text="23"
-                        Style="{StaticResource TextBlockStyle}"
-                        FontFamily="Consolas"/>
-                </StackPanel>
-                <Button
-                    Grid.Column="2"
-                    Content="Connect"
-                    HorizontalContentAlignment="Center"
-                    Padding="12,0"/>
+                    Grid.Column="0"
+                    x:Name="Input"
+                    Text="{Binding InputText}"
+                    Style="{StaticResource ConsoleInput}">
+                    <TextBox.InputBindings>
+                        <KeyBinding
+                            Key="Return"
+                            Command="{Binding SendInput}"
+                            CommandParameter="{Binding ElementName=Input, Path=Text}"/>
+                    </TextBox.InputBindings>
+                </TextBox>
+                <v:ControlsAreaView Grid.Column="1"/>
             </Grid>            
         </Border>
-        
-
-        <StackPanel
-            Orientation="Horizontal"
-            Grid.Row="1"
-            Visibility="Hidden">
-            <TextBox
-                Grid.Row="1"
-                Text="Input ..."
-                Style="{DynamicResource ConsoleTextBox}"/>
-            <TextBox
-                Text="Host:"
-                Style="{DynamicResource TextBlockStyle}"
-                FontFamily="Consolas"/>
-            <ComboBox
-                SelectedIndex="0"
-                IsEnabled="False">
-                <ComboBoxItem Content="192.168.100.1"/>
-                <ComboBoxItem Content="192.168.100.2"/>
-                <ComboBoxItem Content="192.168.100.5"/>
-            </ComboBox>
-            <TextBox
-                Text="Port:"
-                Style="{DynamicResource TextBlockStyle}"
-                FontFamily="Consolas"/>
-            <TextBox
-                Text="23"
-                Style="{DynamicResource TextBlockStyle}"
-                FontFamily="Consolas"/>
-            <Button
-                Content="Connect"
-                HorizontalContentAlignment="Center"
-                Padding="12,0"/>
-        </StackPanel>
-
-        <StackPanel
-            Grid.Row="1"
-            Orientation="Horizontal">
-            
-        </StackPanel>
-            
     </Grid>
 </Window>

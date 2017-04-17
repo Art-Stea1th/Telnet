@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="ASD.Telnet.Views.ControlsAreaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ASD.Telnet.Views">
+    <StackPanel Orientation="Horizontal">
+        <TextBox
+            Text="Available Hosts:"
+            Style="{StaticResource TextBlockStyle}"
+            FontFamily="Consolas"/>
+        <ComboBox
+            SelectedIndex="0"
+            ItemsSource="{Binding Addresses}"
+            Visibility="{Binding Connected,
+            Converter={StaticResource BooleanToVisibilityTrueCollapsed}}">
+        </ComboBox>
+        <TextBox
+            Text="192.168.100.1"
+            Visibility="{Binding Connected,
+            Converter={StaticResource BooleanToVisibilityFalseCollapsed}}"
+            Style="{StaticResource TextBlockStyle}"
+            FontFamily="Consolas"/>
+        <TextBox
+            Text="Port:"
+            Style="{StaticResource TextBlockStyle}"
+            FontFamily="Consolas"/>
+        <TextBox
+            Text="23"
+            Style="{StaticResource TextBlockStyle}"
+            FontFamily="Consolas"/>
+        <Button
+            Grid.Column="2"
+            Content="Connect"
+            HorizontalContentAlignment="Center"
+            Padding="12,0"/>
+    </StackPanel>
+</UserControl>

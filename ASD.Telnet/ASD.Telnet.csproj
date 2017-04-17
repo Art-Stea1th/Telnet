@@ -55,18 +55,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\ConsoleOutput.cs" />
     <Compile Include="Converters\BinaryLogicConverters.cs" />
     <Compile Include="Converters\BooleanInverseConverter.cs" />
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Helpers\ViewModelResolver.cs" />
-    <Compile Include="Services\IPScanner.cs" />
+    <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
+    <Compile Include="Infrastructure\Extensions\IPExtensions.cs" />
+    <Compile Include="Infrastructure\Models\SubnetInfo.cs" />
+    <Compile Include="Infrastructure\Services\SubnetHelper.cs" />
+    <Compile Include="Infrastructure\Services\SubnetScanner.cs" />
+    <Compile Include="ViewModels\ControlsAreaViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Services\TelnetClient.cs" />
+    <Compile Include="Infrastructure\Services\TelnetClient.cs" />
     <Page Include="Controls\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Converters\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ControlsAreaView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -79,6 +89,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\ControlsAreaView.xaml.cs">
+      <DependentUpon>ControlsAreaView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -101,9 +114,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

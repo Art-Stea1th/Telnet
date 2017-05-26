@@ -1,2 +1,1 @@
-# Telnet
 Simple Telnet Client

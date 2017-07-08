@@ -1,1 +1,1 @@
-Simple Telnet Client
+Independed Telnet Client

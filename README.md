@@ -1,1 +1,0 @@
-Independed Telnet Client
